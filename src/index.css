@@ -1,10 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+:root {
+  /* Primary colors */
+  --primary-color-CadetBlue: #084851;
+  --primary-color-CadetBlueDark: #062226;
+  --primary-color-CadetBlueDark2: #486a70;
+  --primary-color-grey: #7e7e7e;
+
+  /* Secundary colors */
+  --secundary-color-green: #aaee6a;
+  --secundar-color-blue: #4c8e91;
+
+  /* Neutral colors */
+  --neutral-color-white: #ffffff;
+}
+
 * {
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  background-color: #000;
 }
 
 h1,
@@ -16,4 +34,22 @@ h4 {
 
 img {
   width: 100%;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+button {
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  border: none;
 }

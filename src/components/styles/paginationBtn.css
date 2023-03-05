@@ -1,0 +1,27 @@
+.c-pagination-btn {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pagination-btn__btn {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  aspect-ratio: 1;
+  background-color: var(--primary-color-CadetBlueDark);
+  color: var(--neutral-color-white);
+  border-radius: 0.3rem;
+  transition: background-color 0.2s;
+}
+
+.pagination-btn__btn--active {
+  background-color: var(--secundary-color-green);
+  font-weight: 600;
+  color: #000000;
+}
+.pagination-btn__btn--inactive:hover {
+  background-color: var(--secundar-color-blue);
+}
