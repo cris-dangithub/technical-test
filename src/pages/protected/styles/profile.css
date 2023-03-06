@@ -10,9 +10,8 @@
   align-items: center;
   gap: 1rem;
   border-radius: 1rem;
-  /*  */
   background-color: var(--primary-color-CadetBlueDark);
-  padding: 2rem 0.5rem ;
+  padding: 2rem 0.5rem;
 }
 
 .profile__welcome {
@@ -61,4 +60,9 @@
 .favorites {
   display: grid;
   gap: 1rem;
+}
+.favorites__title {
+  font-size: 2.5rem;
+  color: var(--btn-color-signin);
+  text-align: center;
 }

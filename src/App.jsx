@@ -1,19 +1,17 @@
-import axios from 'axios';
-import { useEffect } from 'react';
 import './App.css';
+import Footer from './components/shared/Footer';
 
 // ROUTE COMPONENTS
 import AppRouter from './routes/AppRouter';
-import Server from './server/server';
 
 function App() {
-  
   return (
     <div className="App">
+      <div></div>
       {/* Routes */}
       <AppRouter />
       {/* Footer */}
-      <h2>*FOOTER COMPONENT*</h2>
+      <Footer />
     </div>
   );
 }

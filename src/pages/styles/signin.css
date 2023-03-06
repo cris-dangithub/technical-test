@@ -22,7 +22,7 @@
 }
 .signin-title {
   font-size: 2.5rem;
-  color: var(--neutral-color-white);
+  color: var(--btn-color-signin);
   text-align: center;
 }
 .signin-form {

@@ -16,7 +16,7 @@ const Signin = () => {
     swal({ text: 'User created successfully', icon: 'success' }).then(res =>
       navigate('/')
     );
-    server.login(data.email, data.password)
+    server.login(data.email, data.password);
   };
 
   return (

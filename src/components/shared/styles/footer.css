@@ -1,0 +1,33 @@
+.c-footer {
+  margin-top: 2rem;
+  padding: 2em;
+  background-color: var(--primary-color-CadetBlueDark);
+  color: var(--secundar-color-blue);
+  text-align: center;
+  display: grid;
+  gap: 0.5em;
+  width: 100vw;
+}
+
+.footer__title {
+  font-size: 1.2rem;
+}
+
+.footer__list {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  font-size: 1.3rem;
+}
+
+.footer__item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4em;
+  border-radius: 50%;
+  background-color: var(--secundar-color-blue);
+  color: var(--primary-color-CadetBlueDark);
+}
