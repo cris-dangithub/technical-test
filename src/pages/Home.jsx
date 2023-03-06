@@ -1,22 +1,37 @@
 import axios from 'axios';
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import CardCharacter from '../components/CardCharacter';
 import PaginationBtn from '../components/PaginationBtn';
 import './styles/home.css';
 
 const Home = () => {
+  const { server } = useSelector(state => state);
   const [characters, setCharacters] = useState();
   const [pageCharacter, setPageCharacter] = useState(1);
   const [characterByName, setCharacterByName] = useState();
   const [errorInputHandler, setErrorInputHandler] = useState(false);
+  const [isLogged, setIsLogged] = useState(server.readToken());
   const navigate = useNavigate();
+
   const handleClickSignIn = () => {
     navigate('/signin');
   };
   const handleClickLogIn = () => {
     navigate('/login');
+  };
+
+  const handleClickProfile = () => {
+    navigate('/profile');
+  };
+
+  const handleClockLogOut = () => {
+    server.logout();
+    setIsLogged(false);
+    swal({ text: 'Logged successfully', icon: 'success' });
   };
 
   const handleInput = e => {
@@ -25,8 +40,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    //if (!characterByName) {
-    console.log('first');
     const URL = `https://rickandmortyapi.com/api/character/?page=${pageCharacter}${
       characterByName ? `&name=${characterByName}` : ''
     }`;
@@ -39,7 +52,6 @@ const Home = () => {
       .catch(err => {
         setErrorInputHandler(true);
       });
-    //}
   }, [pageCharacter, characterByName]);
 
   return (
@@ -67,18 +79,25 @@ const Home = () => {
             onChange={handleInput}
           />
           <div className="Home__btn-container">
-            <button
-              className="Home__btn Home__btn--signin"
-              onClick={handleClickSignIn}
-            >
-              Sign in
-            </button>
-            <button
-              className="Home__btn Home__btn--login"
-              onClick={handleClickLogIn}
-            >
-              Log in
-            </button>
+            {isLogged ? (
+              <>
+                <button className="Home__btn" onClick={handleClickProfile}>
+                  View profile
+                </button>
+                <button className="Home__btn" onClick={handleClockLogOut}>
+                  Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="Home__btn" onClick={handleClickSignIn}>
+                  Sign in
+                </button>
+                <button className="Home__btn" onClick={handleClickLogIn}>
+                  Log in
+                </button>
+              </>
+            )}
           </div>
         </section>
       </header>

@@ -4,7 +4,9 @@
   --primary-color-CadetBlue: #084851;
   --primary-color-CadetBlueDark: #062226;
   --primary-color-CadetBlueDark2: #486a70;
+  --primary-color-CadetBlue3: #0b3b42;
   --primary-color-grey: #7e7e7e;
+  --btn-color-signin: #8ddbd5;
 
   /* Secundary colors */
   --secundary-color-green: #aaee6a;
@@ -24,11 +26,15 @@ body {
   min-height: 100vh;
   background-color: #000;
 }
+a {
+  color: inherit;
+}
 
 h1,
 h2,
 h3,
-h4 {
+h4,
+p {
   margin: 0;
 }
 

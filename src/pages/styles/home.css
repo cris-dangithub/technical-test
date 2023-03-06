@@ -70,13 +70,12 @@
   font-weight: 600;
   background-color: var(--primary-color-CadetBlueDark);
   color: var(--secundary-color-green);
-  transition: filter 200ms
+  transition: filter 200ms;
 }
 
 .Home__btn:hover {
   filter: brightness(1.2);
 }
-
 
 .Home__cards-container {
   display: grid;

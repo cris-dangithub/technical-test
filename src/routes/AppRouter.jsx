@@ -23,7 +23,6 @@ const AppRouter = () => {
       {/* Protected routes */}
       <Route element={<ProtectedRoutes />}>
         <Route path="/profile" element={<Profile />} />
-        <Route path="/favorites" element={<Favorites />} />
       </Route>
 
       {/* 404 Page*/}

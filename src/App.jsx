@@ -7,9 +7,7 @@ import AppRouter from './routes/AppRouter';
 import Server from './server/server';
 
 function App() {
-  useEffect(() => {
-    const server = new Server();
-  }, []);
+  
   return (
     <div className="App">
       {/* Routes */}
