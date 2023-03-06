@@ -1,0 +1,64 @@
+.c-Profile {
+  padding: 1rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  /*  */
+  background-color: var(--primary-color-CadetBlueDark);
+  padding: 2rem 0.5rem ;
+}
+
+.profile__welcome {
+  font-size: 2rem;
+  color: var(--neutral-color-white);
+  text-align: center;
+}
+
+.profile__icon-container {
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color-CadetBlueDark2);
+}
+
+.profile__icon {
+  font-size: 3rem;
+  color: var(--neutral-color-white);
+}
+.profile__list {
+  display: flex;
+  gap: 1rem;
+}
+
+.profile__item {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #54b901;
+  color: var(--neutral-color-white);
+  font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.profile__logout-btn {
+  font-size: inherit;
+  background-color: transparent;
+}
+
+.favorites {
+  display: grid;
+  gap: 1rem;
+}

@@ -18,21 +18,40 @@
   z-index: 1000;
   right: -10px;
   top: -10px;
-  background-color: #b94343;
   padding: 0.3rem;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.fa-heart-circle-plus {
-  font-size: 1.2rem;
-  color: #e9aeae;
-  transition: color 0.2s;
+.card-character--container__favorite--no-added {
+  background-color: #b94343;
 }
-.card-character--container__favorite:hover {
+.card-character--container__favorite--no-added:hover {
   background-color: #df4444;
 }
+
+.card-character--container__favorite--added {
+  background-color: #6fce4a;
+}
+
+.card-character--container__favorite--added:hover {
+  background-color: #39b608;
+}
+
+
+.icon-favorite {
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.fa-heart-circle-plus {
+  color: #e9aeae;
+}
+.fa-heart-circle-minus {
+  color: #e4f5dd;
+}
+
 
 .card-character--container__favorite:hover .fa-heart-circle-plus {
   color: #fff8f8;

@@ -22,7 +22,6 @@ const usePagination = (pageCharacter, infoPagination) => {
 
   useEffect(() => {
     if (pageCharacter % maxBtns !== 0) {
-      console.log('cambiando bloques');
       setBtnsBlock(generateBlocks()[Math.floor(pageCharacter / maxBtns)]);
     } else {
       setBtnsBlock(generateBlocks()[Math.floor(pageCharacter / maxBtns - 1)]);

@@ -1,17 +1,74 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import swal from 'sweetalert';
 import getCharacterPower from '../utils/getCharacterPower';
 import './styles/cardCharacter.css';
 
-const CardCharacter = ({ character }) => {
+const CardCharacter = ({ character, isLogged }) => {
   const [loadedImage, setLoadedImage] = useState(false);
+  const [isFavorite, setIsFavorite] = useState();
+  const { server } = useSelector(state => state);
+
+  const handleFavorite = () => {
+    // Leer el token
+    if (!server.readToken()) {
+      return swal({
+        text: 'You have to log in first to add favorite characters',
+        icon: 'error',
+      });
+    }
+
+    // Validar que no exista ya en favoritos
+    if (isFavorite) {
+      return swal({
+        text: 'You already have this character on favorites',
+        icon: 'error',
+      });
+    }
+    const data = {
+      id: new Date().getTime(),
+      userId: server.getUser().id,
+      characterId: character.id,
+    };
+    server.postFavorites(data);
+    setIsFavorite(true);
+    return swal({
+      text: 'Character added successfully',
+      icon: 'success',
+    });
+  };
+
   const handleLoad = () => {
     setLoadedImage(true);
   };
 
+  useEffect(() => {
+    if (isLogged) {
+      const favorites = server.getFavorites();
+      setIsFavorite(favorites.includes(character.id));
+    }
+  }, []);
+  useEffect(() => {
+    if (!isLogged) {
+      setIsFavorite();
+    }
+  }, [isLogged]);
+
   return (
     <div className="c-card-character--container">
-      <div className="card-character--container__favorite">
-        <i className="fa-solid fa-heart-circle-plus"></i>
+      <div
+        className={`card-character--container__favorite ${
+          isFavorite
+            ? 'card-character--container__favorite--added'
+            : 'card-character--container__favorite--no-added'
+        }`}
+        onClick={handleFavorite}
+      >
+        {isFavorite ? (
+          <i className="icon-favorite fa-solid fa-heart-circle-minus"></i>
+        ) : (
+          <i className="icon-favorite fa-solid fa-heart-circle-plus"></i>
+        )}
       </div>
       <div className="c-card-character">
         <header className="card-character__header">

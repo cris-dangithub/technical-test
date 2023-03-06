@@ -31,7 +31,7 @@ const Home = () => {
   const handleClockLogOut = () => {
     server.logout();
     setIsLogged(false);
-    swal({ text: 'Logged successfully', icon: 'success' });
+    swal({ text: 'Logged out successfully', icon: 'success' });
   };
 
   const handleInput = e => {
@@ -112,7 +112,11 @@ const Home = () => {
 
       <section className="Home__cards-container">
         {characters?.results.map(character => (
-          <CardCharacter key={character.id} character={character} />
+          <CardCharacter
+            key={character.id}
+            character={character}
+            isLogged={isLogged}
+          />
         ))}
       </section>
       {characters && (
