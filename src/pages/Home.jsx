@@ -1,15 +1,17 @@
 import axios from 'axios';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import CardCharacter from '../components/CardCharacter';
 import PaginationBtn from '../components/PaginationBtn';
+import Server from '../server/server';
 import './styles/home.css';
 
 const Home = () => {
-  const { server } = useSelector(state => state);
+  //!!!!!!!!!!!!!!!!
+  const server = new Server()
+  //!!!!!!!!!!!!!!!!
   const [characters, setCharacters] = useState();
   const [pageCharacter, setPageCharacter] = useState(1);
   const [characterByName, setCharacterByName] = useState();

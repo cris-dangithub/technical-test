@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
+import Server from '../server/server';
+import { getNewFavorites } from '../store/slices/favorites.slice';
 import getCharacterPower from '../utils/getCharacterPower';
 import './styles/cardCharacter.css';
 
 const CardCharacter = ({ character, isLogged }) => {
   const [loadedImage, setLoadedImage] = useState(false);
   const [isFavorite, setIsFavorite] = useState();
-  const { server } = useSelector(state => state);
+  const server = new Server();
+  const dispatch = useDispatch();
 
   const handleFavorite = () => {
     // Leer el token
@@ -20,17 +23,26 @@ const CardCharacter = ({ character, isLogged }) => {
 
     // Validar que no exista ya en favoritos
     if (isFavorite) {
+      const data = {
+        characterId: character.id,
+        userId: server.getUser().id,
+      };
+      server.deleteFavorite(data);
+      dispatch(getNewFavorites());
+      setIsFavorite(false);
       return swal({
-        text: 'You already have this character on favorites',
-        icon: 'error',
+        text: 'Favorite character removed successfully',
+        icon: 'success',
       });
     }
+    // Si no existe, agregar a favoritos
     const data = {
       id: new Date().getTime(),
       userId: server.getUser().id,
       characterId: character.id,
     };
     server.postFavorites(data);
+    dispatch(getNewFavorites());
     setIsFavorite(true);
     return swal({
       text: 'Character added successfully',

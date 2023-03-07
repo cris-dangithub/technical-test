@@ -3,12 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import CardCharacter from '../../components/CardCharacter';
+import Server from '../../server/server';
 import './styles/profile.css';
 
 const Profile = () => {
-  const { server } = useSelector(state => state);
+  const server = new Server();
+
   const [user, setUser] = useState(server.getUser());
-  const [favorites, setFavorites] = useState();
+  const [favoriteCharacters, setFavoriteCharacters] = useState();
+  const { favorites } = useSelector(state => state);
+
   const navigate = useNavigate();
 
   const handleLogOut = () => {
@@ -18,14 +22,18 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    const URL = `https://rickandmortyapi.com/api/character/${JSON.stringify(
-      server.getFavorites()
-    )}`;
+    const URL = `https://rickandmortyapi.com/api/character/${favorites}`;
     axios
       .get(URL)
-      .then(res => setFavorites(res.data))
-      .catch(err => console.log(err));
-  }, []);
+      .then(res => {
+        if (favorites.length > 1) {
+          return setFavoriteCharacters(res.data);
+        }
+        setFavoriteCharacters([res.data]);
+      })
+      .catch(err => setFavoriteCharacters());
+    return;
+  }, [favorites]);
 
   return (
     <article className="c-Profile">
@@ -50,8 +58,8 @@ const Profile = () => {
       <section className="favorites">
         <h2 className="favorites__title">Favorites</h2>
         <section className="Home__cards-container">
-          {favorites
-            ? favorites.map(character => (
+          {favoriteCharacters
+            ? favoriteCharacters.map(character => (
                 <CardCharacter
                   key={character.id}
                   character={character}

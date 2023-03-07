@@ -71,6 +71,19 @@ class Server {
     const newFavorite = JSON.stringify(obj);
     localStorage.setItem('server_RickAndMortyApp', newFavorite);
   }
+
+  deleteFavorite(data) {
+    const obj = JSON.parse(localStorage.getItem('server_RickAndMortyApp'));
+    for (let i = 0; i < obj.favorites.length; i++) {
+      const favorite = obj.favorites[i];
+      if (data.characterId === favorite.characterId && data.userId === favorite.userId) {
+        obj.favorites.splice(i, 1);
+        break;
+      }
+    }
+    const newObj = JSON.stringify(obj);
+    localStorage.setItem('server_RickAndMortyApp', newObj);
+  }
 }
 
 export default Server;

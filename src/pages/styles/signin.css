@@ -1,3 +1,11 @@
+.sigin__container-btn-home {
+  margin-top: 2rem;
+  background-color: var(--primary-color-CadetBlueDark);
+}
+.signin__home-btn {
+  color: var(--btn-color-signin);
+}
+
 .c-Signin {
   padding: 1.5rem;
   display: flex;

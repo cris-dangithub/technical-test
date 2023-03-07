@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import server from './slices/server.slice';
+import favorites from './slices/favorites.slice';
 
 export default configureStore({
   reducer: {
-    server,
+    favorites,
   },
 });
