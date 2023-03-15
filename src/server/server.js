@@ -4,8 +4,6 @@ import initModel from './initModel';
 class Server {
   constructor() {
     this.database();
-    //
-    //this.login('cristiandaniel8080@gmail.com', 'cris123456');
   }
 
   database() {

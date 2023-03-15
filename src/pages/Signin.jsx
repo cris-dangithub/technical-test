@@ -1,12 +1,15 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import Server from '../server/server';
+import { getNewFavorites } from '../store/slices/favorites.slice';
 import './styles/signin.css';
 
 const Signin = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { register, reset, handleSubmit } = useForm();
   const server = new Server();
 
@@ -16,6 +19,7 @@ const Signin = () => {
     swal({ text: 'User created successfully', icon: 'success' }).then(res =>
       navigate('/')
     );
+    dispatch(getNewFavorites());
     server.login(data.email, data.password);
   };
 
